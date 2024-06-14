@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body {
+      background-color: lightpink;
+    }
+
+    .cal {
+      width: 400px;
+      margin: 150px auto;
+      border: 3px solid grey;
+      padding: 45px;
+      background-color: black;
+    }
+
+    .cal input[type="text"] {
+      width: 100%;
+      margin-bottom: 30px;
+      padding: 10px;
+      font-size: 20px;
+      border: 3px solid grey;
+      box-sizing: border-box;
+    }
+
+    .cal input[type="button"] {
+      width: 80px;
+      height: 50px;
+      margin: 8px;
+      font-size: 30px;
+      border: 3px solid gray;
+    }
+
+    .cal input[type="button"].operator {
+      background-color: lightgray;
+    }
+
+    .cal input[type="button"].equals {
+      background-color: forestgreen;
+      color: whitesmoke;
+    }
+  </style>
+</head>
+<body>
+  <div class="cal">
+    <input type="text" id="display" readonly>
+    <input type="button" value="7" onclick="addToDisplay('7')">
+    <input type="button" value="8" onclick="addToDisplay('8')">
+    <input type="button" value="9" onclick="addToDisplay('9')">
+    <input type="button" class="operator" value="+" onclick="addToDisplay('+')">
+    <br>
+    <input type="button" value="4" onclick="addToDisplay('4')">
+    <input type="button" value="5" onclick="addToDisplay('5')">
+    <input type="button" value="6" onclick="addToDisplay('6')">
+    <input type="button" class="operator" value="-" onclick="addToDisplay('-')">
+    <br>
+    <input type="button" value="1" onclick="addToDisplay('1')">
+    <input type="button" value="2" onclick="addToDisplay('2')">
+    <input type="button" value="3" onclick="addToDisplay('3')">
+    <input type="button" class="operator" value="*" onclick="addToDisplay('*')">
+    <br>
+    <input type="button" value="0" onclick="addToDisplay('0')">
+    <input type="button" class="operator" value="/" onclick="addToDisplay('/')">
+    <input type="button" class="operator" value="C" onclick="clearDisplay()">
+    <input type="button" class="equals" value="=" onclick="calculate()">
+  </div>
+
+  <script>
+    function addToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+
+    function calculate() {
+      try {
+        var expression = document.getElementById('display').value;
+        var result = eval(expression);
+        document.getElementById('display').value = result;
+      } catch (error) {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
